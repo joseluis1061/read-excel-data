@@ -16,8 +16,6 @@ export const ReadExcel = () => {
     }else{
       setSheetNames(null);
     }
-    console.log("e")
-    console.log(e);
     setSheetData(e);
   }
 
@@ -52,7 +50,6 @@ export const ReadExcel = () => {
                       name="SheetName"
                       checked={s === sheet}
                       value={s}
-                      key={index}
                       onChange={(e)=> handleSheetChange(e)}
                     />
                     <label>{s}</label>
@@ -66,15 +63,17 @@ export const ReadExcel = () => {
               <Col md={12}>
                 <Table>
                   <thead className='text-primary'>
-                    {sheetData[sheet][0].map((head,index)=>
-                      <th keys={index}>
-                        {head}
-                      </th>
-                    )}
+                    <tr>
+                      {sheetData[sheet][0].map((head,index)=>
+                        <th key={index}>
+                          {head}
+                        </th>
+                      )}
+                    </tr>
                   </thead>
                   <tbody>
                     {sheetData[sheet].slice(1).map((row,index)=>
-                      <tr keys={index}>
+                      <tr key={index}>
                         {row.map((cel, index) => <td key={index}>{cel}</td>)}
                       </tr>
                     )}
