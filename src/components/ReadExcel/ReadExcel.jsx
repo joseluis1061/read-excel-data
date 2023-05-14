@@ -61,7 +61,12 @@ export const ReadExcel = () => {
             <Row>
               <Label>{sheet}</Label>
               <Col md={12}>
-                <Table>
+                <Table 
+                  striped 
+                  hover 
+                  bordered 
+                  responsive
+                >
                   <thead className='text-primary'>
                     <tr>
                       {sheetData[sheet][0].map((head,index)=>
